@@ -36,6 +36,11 @@ possible, but stays completely C++98-compatible when neccessary.
 %prep
 rm -rf %{name}-%{version}
 unzip -d %{name}-%{version} %{SOURCE0}
+cd %{name}-%{version}
+# change dos endings to unix
+sed -i "s|\r||g" include/half.hpp
+sed -i "s|\r||g" LICENSE.txt
+sed -i "s|\r||g" README.txt
 
 %install
 cd %{name}-%{version}
